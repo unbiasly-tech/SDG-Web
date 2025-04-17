@@ -39,9 +39,9 @@ const SDGNews = () => {
     }
   }
 
-  useEffect(() => {
-    News()
-}, []);
+//   useEffect(() => {
+//     News()
+// }, []);
 
 
 
