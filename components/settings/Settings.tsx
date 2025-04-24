@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { Search, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SETTINGS_OPTIONS } from '@/lib/constants/settings-constants';
+import ChangePassword from './ChangePassword';
+import Deactivate from './Deactivate';
+import Sessions from './Sessions';
+import { Switch } from '../ui/switch';
 
 interface SettingsProps {
   className?: string;
@@ -84,7 +88,8 @@ const Settings: React.FC<SettingsProps> = ({
             {activeItem.subOptions.map(subOption => (
               <div 
                 key={subOption.id} 
-                className="p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors flex items-center justify-between"
+                className="p-3 rounded-md hover:bg-gray-100 cursor-pointer transition-colors flex items-center justify-between"
+                onClick={subOption?.sessionTab ? () => handleSelectSetting(subOption?.sessionTab || '') : undefined}
               >
                 <div>
                   <h3 className="font-medium">{subOption.label}</h3>
@@ -92,12 +97,17 @@ const Settings: React.FC<SettingsProps> = ({
                     <p className="text-sm text-gray-500 mt-1">{subOption?.description}</p>
                   )}
                 </div>
-                <ChevronRight size={20} className="text-gray-400" />
+                {activeItem?.isToggle ? <Switch  className="text-gray-400" />  : <ChevronRight size={20} className="text-gray-400" />}
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {activeSection && !activeItem?.subOptions && activeSection == 'Change_Passord' && <ChangePassword />}
+      {activeSection && !activeItem?.subOptions && activeSection == 'Deactivate' && <Deactivate />}
+      {activeSection && !activeItem?.subOptions && activeSection == 'Sessions' && <Sessions />}
+      
     </div>
   );
 };

@@ -37,6 +37,15 @@ export const BOOKMARKS_TABS = [
     // "Schemes"
 ];
 
+export const SEARCH_RESULT_CATEGORIES = [
+    {id: "all", label: "All"},
+    {id: "people", label: "People"},
+    {id: "companies", label: "Companies"},
+    {id: "ministries", label: "Videos"},
+    {id: "news", label: "News"},
+    {id: "society", label: "Society"}
+]
+
 export const PROFILE_OPTIONS = [
   {
     icon: '/icons/house.svg',
